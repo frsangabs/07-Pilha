@@ -80,20 +80,27 @@ void push()
 	NO* novo = (NO*)malloc(sizeof(NO));
 	if (novo == NULL)
 	{
+		cout << "Erro ao alocar memoria.\n";
 		return;
 	}
 
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
-	novo->prox = NULL;
-
-
+	novo->prox = topo;
+	topo = novo;
+	cout << "Elemento inserido.\n";
 }
 
 void pop()
 {
+	if (topo == NULL) {
+		cout << "Pilha vazina.\n";
+		return;
+	}
 
-	
-
+	NO* paraRemover = topo;
+	topo = topo->prox;
+	free(paraRemover);
+	cout << "Elemento removido.\n";
 }
 
